@@ -5,6 +5,9 @@ on:
     types: [opened, reopened, synchronize]
   workflow_dispatch:
 
+permissions:
+  pull-requests: write
+  issues: write
 
 jobs:
   comment:
@@ -18,5 +21,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: "👋 Thanks for opening this PR! The team will review it shortly. 🚀"
+              body: `👋 Hi @${context.actor}! Thanks for your PR — Bugbot will generate a summary automatically. 🚀`
             })
